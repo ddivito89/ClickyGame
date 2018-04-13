@@ -17,11 +17,9 @@ class Game extends Component{
         <Nav />
         <Container>
           <Row >
-            <Col size="md-3" />
-            <Col size="md-6" className="text-center">
+            <Col size="md-8" className="col-centered">
               <CardList cards={this.state.cards}/>
             </Col>
-            <Col size="md-3" />
           </Row>
         </Container>
       </div>
