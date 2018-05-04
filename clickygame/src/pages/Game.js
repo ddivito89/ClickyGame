@@ -79,19 +79,17 @@ clickTest(id){
           alert={this.state.alert}
           score={this.state.score}
           topScore={this.state.topScore}
-          className="d-flex  justify-content-between mb-3"
         />
-        <Container calssName="d-flex">
+        <Container>
           <Row >
-            <div className="d-flex justify-content-center mb-3">
-              <div className="col-md-10">
+            <div className="d-flex justify-content-center game">
+            <Col size="md-10">
                 <CardList
                   clickTest={this.clickTest.bind(this)}
                   cards={this.state.cards}
                 />
-              </div>  
+              </Col>
             </div>          
-
           </Row>
         </Container>
       </div>
