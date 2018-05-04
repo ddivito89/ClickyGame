@@ -10,6 +10,10 @@ body {
     color:white
   }
 
+  .game{
+      max-width:960px
+  }
+
 
 img{
   width:160px;
