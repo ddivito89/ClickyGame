@@ -5,21 +5,93 @@ import CardList from "../components/CardList";
 
 class Game extends Component{
 
-  state = {
-    cards: ['Arya.jpg','Bran.png','Brienne.png','Cersei.png','Daenerys.jpg','Jaime.jpg','JonSnow.png','Ned.jpg','Podrick.jpg','Sam.jpg','Sansa.jpg','Tyrion.jpg'],
-    wins:0,
-    record:0
+state = {
+  cards: [
+    {
+      id: 1,
+      src: 'Arya.jpg'
+    }, {
+      id: 2,
+      src: 'Bran.png'
+    }, {
+      id: 3,
+      src: 'Brienne.png'
+    }, {
+      id: 4,
+      src: 'Cersei.png'
+    }, {
+      id: 5,
+      src: 'Daenerys.jpg'
+    }, {
+      id: 6,
+      src: 'Jaime.jpg'
+    }, {
+      id: 7,
+      src: 'JonSnow.png'
+    }, {
+      id: 8,
+      src: 'Ned.jpg'
+    }, {
+      id: 9,
+      src: 'Podrick.jpg'
+    }, {
+      id: 10,
+      src: 'Sam.jpg'
+    }, {
+      id: 11,
+      src: 'Sansa.jpg'
+    }, {
+      id: 12,
+      src: 'Tyrion.jpg'
+    }
+  ],
+  score: 0,
+  topScore: 0,
+  clicked:[],
+  alert: 'Click an image to begin'
+}
+
+clickTest(id){
+    console.log(this.state.clicked.indexOf(id))
+    if(this.state.clicked.indexOf(id)>-1){
+      this.setState(
+        {
+          score: 0,
+          alert: 'You guessed Incorrectly :(',
+          clicked: []
+      })
+
+    }else{
+      this.setState(
+        {
+          score: this.state.score + 1,
+          alert: 'You guessed Correctly!',
+          topScore:(this.state.topScore < this.state.score + 1) ? this.state.score + 1:this.state.topScore,
+          clicked: this.state.clicked.concat([id])
+      })
+    }
   }
 
   render(){
     return(
       <div>
-        <Nav />
-        <Container>
+        <Nav
+          alert={this.state.alert}
+          score={this.state.score}
+          topScore={this.state.topScore}
+          className="d-flex  justify-content-between mb-3"
+        />
+        <Container calssName="d-flex">
           <Row >
-            <Col size="md-8" className="col-centered">
-              <CardList cards={this.state.cards}/>
-            </Col>
+            <div className="d-flex justify-content-center mb-3">
+              <div className="col-md-10">
+                <CardList
+                  clickTest={this.clickTest.bind(this)}
+                  cards={this.state.cards}
+                />
+              </div>  
+            </div>          
+
           </Row>
         </Container>
       </div>
